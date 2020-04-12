@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>NodeJs Demo API - Axios Course</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="">
+            NodeJs Demo API
+          </a>
+
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#getting-started">
+              Getting Started
+            </a>
+
+            <a class="navbar-item" href="#endpoints">
+              Available EndPoints
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                EndPoints
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="#books-endpoints">
+                  Books
+                </a>
+                <a class="navbar-item" href="#messages-endpoints">
+                  Messages
+                </a>
+                <a class="navbar-item" href="#posts-endpoints">
+                  Posts
+                </a>
+                <a class="navbar-item" href="#users-endpoints">
+                  Users
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary" href="https://codersam.online/courses/work-with-axios-like-a-pro/">
+                  <strong>Visit Course</strong>
+                </a>
+                <a class="button is-info" href="https://codersam.online">
+                  CoderSam
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="hero is-medium is-dark">
+      <div class="container">
+        <div class="hero-body">
+          <h1 class="title"><i class="fa fa-database"></i> NodeJs REST API</h1>
+          <br />
+          <p class="subtitle">This Project is based on NodeJS and been created as a demonstration and material for
+            <b>'Work with Axios Like a Pro'</b> Courses. <br>
+            As a Documentation we will be listing API rules and Endpoints as Reference.</p>
+            <a href="https://www.mongodb.com/" class="button is-info"><i class="fa fa-database"></i> &nbsp;MongoDB Atlas</a>
+            <a href="https://jwt.io/" class="button is-info"><i class="fa fa-lock"></i> &nbsp;JWT Portal</a>
+            <a href="https://github.com/axios/axios" class="button is-danger"><i class="fab fa-github"></i> &nbsp;Axios Repository</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-three-quarter" id="getting-started">
+          <h2 class="is-size-4"><i class="fa fa-desktop"></i> &nbsp;Getting Started</h2>
+          <hr />
+          <ol>
+            <li>All end points prefixed with <code>/api</code> so for example you can get books as
+              <code>GET /api/books.</code></li>
+            <li>Server Port can be Configured but set <code>SERVER_PORT</code> in <code>.env</code> file</li>
+            <li>MongoDB Connection URI can be set as <code>DB_URI</code> in <code>.env</code> file</li>
+            <li>JWT Encryption Secret can be set as <code>JWT_SECRET</code> in <code>.env</code> file</li>
+          </ol>
+        </div>
+        <div class="column is-one-quarter" id="endpoints">
+          <h2 class="is-size-4">Available EndPoints</h2>
+          <hr />
+          <ol>
+            <li>Books <code>/api/books</code></li>
+            <li>Messages <code>/api/messages</code></li>
+            <li>Posts <code>/api/posts</code></li>
+            <li>Users <code>/api/user</code></li>
+          </ol>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+  <section class="section endpoint" id="books-endpoints">
+    <div class="container">
+      <h2 class="is-size-4"><i class="fa fa-book"></i> &nbsp;Books EndPoints :</h2>
+      <hr>
+      <ul>
+        <li>
+          <b>Get List of Books</b> <br />
+          <code>GET /api/books</code>
+          <small>you can also limit the number of books returned but adding query string <code>?limit=LIMIT</code> for
+            example <code>GET /api/books?limit=2</code></small>
+        </li>
+        <li>
+          <b>Get a Specific Book Record</b> <br />
+          <code>GET /api/books/BOOK_ID</code>
+          <small>IDs are ranged for books from 1-5, for example <code>GET /api/books/1</code></small>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="section endpoint" id="messages-endpoints">
+    <div class="container">
+      <h2 class="is-size-4"><i class="fa fa-comment"></i> &nbsp;Messages EndPoints :</h2>
+      <hr>
+      <ul>
+        <li>
+          <b>Get List of Messages</b> <br />
+          <code>GET /api/messages</code>
+        </li>
+        <li>
+          <b>Create a new Message </b><br />
+          <code>POST /api/messages</code>
+          <br />
+          <p>Expected Payload</p>
+          <pre>{
+  name : String, 
+  subject : String, 
+  content : String
+}</pre>
+        </li>
+
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="section endpoint" id="posts-endpoints">
+    <div class="container">
+      <h2 class="is-size-4"><i class="fa fa-bars"></i> &nbsp;Posts EndPoints :</h2>
+      <hr>
+      <ul>
+        <li>
+          <b>Get List of Posts</b> <br />
+          <code>GET /api/posts</code>
+        </li>
+        <li>
+          <b>Create a new Post </b> (Auth Required)<br />
+          <code>POST /api/posts</code>
+          <br />
+          <p>Expected Payload</p>
+          <pre>{
+  title : String, //Optional
+  content : String,
+  thumbnail : FILE //Optional
+}</pre>
+        </li>
+        <li>
+          <b>Get a Specific Post Record</b> <br />
+          <code>GET /api/posts/POST_ID</code>
+          <small>IDs are Generated Automatically in Database, for example
+            <code>GET /api/posts/5e82696d8431b6281c16f761</code></small>
+        </li>
+        <li>
+          <b>Delete a Specific Post Record</b> (Auth Required) <br />
+          <code>DELETE /api/posts/POST_ID</code>
+          <small>IDs are Generated Automatically in Database, for example
+            <code>DELETE /api/posts/5e82696d8431b6281c16f761</code></small>
+        </li>
+        <li>
+          <b>Update Existing Post </b> (Auth Required)<br />
+          <code>PUT /api/posts/POST_ID</code>
+          <br />
+          <p>Expected Payload</p>
+          <pre>{
+  title : String, //Optional
+  content : String, //Optional
+  thumbnail : FILE //Optional
+}</pre>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  </section>
+
+  <section class="section endpoint" id="users-endpoints">
+    <div class="container">
+      <h2 class="is-size-4"><i class="fa fa-user"></i> &nbsp;Users EndPoints :</h2>
+      <hr>
+      <ul>
+        <li>
+          <b>Get List of Users</b> <br />
+          <code>GET /api/users</code>
+        </li>
+        <li>
+          <b>Register New User </b><br />
+          <code>POST /api/users/register</code>
+          <br />
+          <p>Expected Payload</p>
+          <pre>{
+  name : String, //Optional
+  email : String,
+  password : FILE
+}</pre>
+        </li>
+        <li>
+          <b>Login and Authorize </b><br />
+          <code>POST /api/users/login</code>
+          <br />
+          <p>Expected Payload</p>
+          <pre>{
+  email : String,
+  password : String,
+}</pre>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>NodeJs REST API</strong> by <a href="https://codersam.online">CoderSam</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+  <script src="./javascript/script.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+
+</html>
